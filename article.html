@@ -201,14 +201,14 @@
                             </div>
                             <div class="col-lg-3">
                                 <div class="single_item">
-                                    <span>Services:</span>
-                                    <p>Web Development</p>
+                                    <span>Uploaded date:</span>
+                                    <p id="article-uploaded-date"></p>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="single_item">
-                                    <span>Website:</span>
-                                    <p>https://calmer.com</p>
+                                    <span>Category:</span>
+                                    <p id="article-category"></p>
                                 </div>
                             </div>
                         </div>
@@ -256,75 +256,6 @@
         </div>
     </section>
     <!-- Portfolio single -->
-
-    <!-- Portfolio Grid -->
-    <section class="portfolio_grid_two">
-        <div class="container">
-            <div class="min_project_area_grid_two three single">
-                <div class="section_title">
-                    <h2>View related projects</h2>
-                </div>
-                <div class="row">
-                    <div class="col-xl-4">
-                        <div class="single_project wow fadeInLeft" data-wow-delay="0.5s">
-                            <div class="project_top">
-                                <img src="assets/img/project/8.png" alt="">
-                                <ul class="tags list-unstyled">
-                                    <li><a href="portfolio-single.html">Branding</a></li>
-                                    <li><a href="portfolio-single.html">Ui/ux</a></li>
-                                    <li><a href="portfolio-single.html">Development</a></li>
-                                </ul>
-                            </div>
-                            <div class="project_bottom">
-                                <h4><a href="portfolio-single.html">Brochures Mockup
-                                        for Jungle</a></h4>
-                                <a class="project_btn" href="portfolio-single.html">View project<i
-                                        class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4">
-                        <div class="single_project wow fadeInLeft" data-wow-delay="0.5s">
-                            <div class="project_top">
-                                <img src="assets/img/project/9.png" alt="">
-                                <ul class="tags list-unstyled">
-                                    <li><a href="portfolio-single.html">Branding</a></li>
-                                    <li><a href="portfolio-single.html">Ui/ux</a></li>
-                                    <li><a href="portfolio-single.html">Development</a></li>
-                                </ul>
-                            </div>
-                            <div class="project_bottom">
-                                <h4><a href="portfolio-single.html">Book Cover Design
-                                        for Writer</a></h4>
-                                <a class="project_btn" href="portfolio-single.html">View project<i
-                                        class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4">
-                        <div class="single_project wow fadeInLeft" data-wow-delay="0.5s">
-                            <div class="project_top">
-                                <img src="assets/img/project/10.png" alt="">
-                                <ul class="tags list-unstyled">
-                                    <li><a href="portfolio-single.html">Branding</a></li>
-                                    <li><a href="portfolio-single.html">Ui/ux</a></li>
-                                    <li><a href="portfolio-single.html">Development</a></li>
-                                </ul>
-                            </div>
-                            <div class="project_bottom">
-                                <h4><a href="portfolio-single.html">Package Design
-                                        for Sticko</a></h4>
-                                <a class="project_btn" href="portfolio-single.html">View project<i
-                                        class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="portfolio-single.html" class="bg_btn_color">Explore all</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Portfolio Grid -->
 
     <!-- Footer -->
     <footer class="footer" data-bg-color="#D9E0DD">
@@ -404,6 +335,10 @@
     <!-- jQuery Libraary -->
     <script src="assets/js/jquery.min.js"></script>
     <script>
+        function formatDate(date) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
         document.addEventListener('DOMContentLoaded', () => {
             // Replace 'https://api.example.com/project/1' with your actual API endpoint
             const apiUrl = 'http://localhost:5000/api/v1/admin/article/65d9c9dd9a58684463f7e8a3';
@@ -417,14 +352,15 @@
                     return response.json();
                 })
                 .then(data => {
-                    console.log("data: " + JSON.stringify(data))
+                    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                    const uploadedDate = data.data.article.created_at;
                     // Update HTML content with project details
                     document.getElementById('article-title').innerText = data.data.article.title;
                     document.getElementById("article-description").innerText = data.data.article.description;
                     document.getElementById("article-payment-model").innerText = data.data.article.payment_model;
-                    document.getElementById("article-amount").ineerText = data.data.article.amount;
-                    
-                    // document.getElementById('projectContent').innerText = data.content;
+                    document.getElementById("article-amount").innerText = data.data.article.amount === "0" ? "FREE" : data.data.article.amount;
+                    document.getElementById("article-category").innerText = data.data.article.category.name;
+                    document.getElementById("article-uploaded-date").innerText = uploadedDate;
                 })
                 .catch(error => {
                     console.error('Error fetching project details:', error);
