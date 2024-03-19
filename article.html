@@ -353,14 +353,14 @@
                 })
                 .then(data => {
                     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-                    const uploadedDate = data.data.article.created_at;
+                    const uploadedDate = new Date(data.data.article.created_at);
                     // Update HTML content with project details
                     document.getElementById('article-title').innerText = data.data.article.title;
                     document.getElementById("article-description").innerText = data.data.article.description;
                     document.getElementById("article-payment-model").innerText = data.data.article.payment_model;
                     document.getElementById("article-amount").innerText = data.data.article.amount === "0" ? "FREE" : data.data.article.amount;
                     document.getElementById("article-category").innerText = data.data.article.category.name;
-                    document.getElementById("article-uploaded-date").innerText = uploadedDate;
+                    document.getElementById("article-uploaded-date").innerText = `${uploadedDate.getDay()}/${uploadedDate.getMonth()}/${uploadedDate.getFullYear()}`;
                 })
                 .catch(error => {
                     console.error('Error fetching project details:', error);
