@@ -5169,4 +5169,28 @@ a {
   font-size: 18px;
   line-height: 32px;
 }
+
+.article-tags-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+}
+
+.article-tags-container .tags, .article-tags-container .tags .list-unstyled, .portfolio_single_content .top .article-tags-container .tags{
+  margin: 0px;
+}
+
+@media screen and (max-width: 900px) {
+    .article-tags-container {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .article-tags-container .bg_btn_color {
+      width: 100%;
+      text-align: center;
+    }
+}
 /*# sourceMappingURL=style.css.map */
