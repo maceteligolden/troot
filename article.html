@@ -269,9 +269,11 @@
                 let convertedCartArray = JSON.parse(cart);
                 document.getElementById('cart-count').innerText = convertedCartArray.length;
             }
+
+            const articleId = window.location.toString().split('=')[1];
             
             // Replace 'https://api.example.com/project/1' with your actual API endpoint
-            const apiUrl = 'http://localhost:5000/api/v1/admin/article/65d9c9dd9a58684463f7e8a3';
+            const apiUrl = `http://localhost:5000/api/v1/admin/article/${articleId}`;
 
             // Fetch data from the API
             fetch(apiUrl)
@@ -287,7 +289,7 @@
                     const uploadedDate = new Date(data.data.article.created_at);
                     // Update HTML content with project details
                     document.getElementById('article-title').innerText = data.data.article.title;
-                    document.getElementById("article-description").innerText = data.data.article.description;
+                    document.getElementById("article-description").innerHTML = data.data.article.description;
                     document.getElementById("article-payment-model").innerText = data.data.article.payment_model;
                     document.getElementById("article-amount").innerText = data.data.article.amount === "0" ? "FREE" : data.data.article.amount;
                     document.getElementById("article-category").innerText = data.data.article.category.name;
