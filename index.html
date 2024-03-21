@@ -393,6 +393,7 @@
     <!-- Footer -->
 
     <script>
+        console.log("url: " + window.location);
         document.addEventListener('DOMContentLoaded', () => {
             let cart = localStorage.getItem("cart");
             if(!JSON.parse(cart)) {
