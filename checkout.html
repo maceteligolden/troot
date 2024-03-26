@@ -307,7 +307,7 @@
                 items
             }).then((res)=> {
                 // TODO: move to stripe checkout 
-                console.log("res: " + res);
+                window.location.replace(res.data.data.url);
             }).catch((err)=> {
                 //TODO: show toast
                 console.log("error: " + err);
