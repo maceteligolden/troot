@@ -225,6 +225,10 @@
         width: 100%;
     }
 
+    .creative_agency > .founder {
+        width: 581px;
+    }
+
     .creative_agency .content {
         padding-left: 50px;
     }
@@ -235,6 +239,10 @@
 
     .min_project_slider_area .single_project_slider .project_bottom {
         padding-right: 80px;
+    }
+
+    .power .section_img {
+        object-fit: contain;
     }
 
     .power .section_img img {
