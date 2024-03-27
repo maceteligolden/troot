@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trootfindr | Portfolio single</title>
+    <title>Trootfindr | Article single</title>
     <link rel="icon" type="image/x-icon" href="assets/img/icon/tab-icon.png">
     <!-- Font Awesome Css -->
     <link rel="stylesheet" href="assets/css/plugins/font-awesome/css/all.min.css">
@@ -108,13 +108,13 @@
                     <img src="assets/img/project/single.png" alt="" class="min_img">
                     <div class="article-tags-container">
                         <ul class="tags list-unstyled ">
-                            <li><a href="portfolio-single.html" class="bg_btn">Branding</a></li>
+                            <!-- <li><a href="portfolio-single.html" class="bg_btn">Branding</a></li>
                             <li><a href="portfolio-single.html" class="bg_btn">Ui/ux</a></li>
-                            <li><a href="portfolio-single.html" class="bg_btn">Development</a></li>
+                            <li><a href="portfolio-single.html" class="bg_btn">Development</a></li> -->
                         </ul>
                        
-                            <button class="bg_btn_color" role="button" onclick="addToCart()"><i class="fa-solid fa-bag-shopping"></i> Add to
-                                cart
+                            <button class="bg_btn_color" role="button" onclick="addToCart()">
+                                Free Download                            
                             </button>
                        
                     </div>
@@ -243,21 +243,23 @@
         let activeArticle;
         
         function addToCart() {
-            let cart = localStorage.getItem("cart");
-            if(!cart){
-                let cartArray = [];
-                cartArray.push(activeArticle);
-                localStorage.setItem("cart", JSON.stringify(cartArray));
-                document.getElementById('cart-count').innerText = cartArray.length;
-            } else {
-                let convertedCartArray = JSON.parse(cart);
+            // let cart = localStorage.getItem("cart");
+            // if(!cart){
+            //     let cartArray = [];
+            //     cartArray.push(activeArticle);
+            //     localStorage.setItem("cart", JSON.stringify(cartArray));
+            //     document.getElementById('cart-count').innerText = cartArray.length;
+            // } else {
+            //     let convertedCartArray = JSON.parse(cart);
 
-                convertedCartArray.push(activeArticle);
+            //     convertedCartArray.push(activeArticle);
 
-                localStorage.setItem("cart", JSON.stringify(convertedCartArray));
+            //     localStorage.setItem("cart", JSON.stringify(convertedCartArray));
 
-                document.getElementById('cart-count').innerText = convertedCartArray.length;
-            }
+            //     document.getElementById('cart-count').innerText = convertedCartArray.length;
+            // }
+
+            window.location.href = `https://s3.amazonaws.com/trootfindrstorage/${activeArticle.key}`
             
         }
 
