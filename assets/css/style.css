@@ -4578,6 +4578,13 @@ a {
 .header_aria .navbar .navbar-brand {
   padding-top: 30px;
   padding-bottom: 25px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.logo, .footer_logo {
+  max-height: 40px; /* Adjust the value as needed */
+  max-width: 100px;
 }
 
 .header_aria .navbar .navbar-collapse .navbar-nav {
@@ -4616,6 +4623,8 @@ a {
     top: 20px;
     position: absolute;
   }
+
+ 
 }
 
 .header_aria .navbar .navbar-collapse .navbar-nav .nav-item.dropdown .dropdown-menu {
