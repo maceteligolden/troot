@@ -198,7 +198,7 @@
             // Fetch data from the API using Axios
             const response = await axios.get(apiUrl);
             const data = response.data.data;
-            console.log(JSON.stringify(data))
+         
             document.getElementById('card-template').innerHTML = data.map(article => 
                 `
                     <div class="col-xl-6">
