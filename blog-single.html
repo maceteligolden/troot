@@ -72,7 +72,7 @@
                     </li>
                 </ul>
                 <div class="nav_buttons">
-                    <!-- <a href="cart.html" class="cart"><i class="fa-solid fa-bag-shopping"></i> Cart (<span id="cart-count"></span>)</a> -->
+                    <a href="cart.html" class="cart"><i class="fa-solid fa-bag-shopping"></i> Cart (<span id="cart-count"></span>)</a>
                     <a href="contact.html" class="contact_btn">Contact us</a>
                 </div>
             </div>
@@ -108,7 +108,7 @@
                     <div class="blog_single">
                         <div class="post_content">
                             <div class="top">
-                                <img src="assets/img/blog/1.png" alt="">
+                                <img src="assets/img/blog/1.png" alt="" id="thumbnail">
                                 <div class="date_cat">
                                     <span id="blog-createdDate">March 12, 2022</span>
                                     <span>/</span>
@@ -122,87 +122,6 @@
                                
                             </div>
                         </div>
-                        <!-- <div class="tag_share">
-                            <ul class="tags list-unstyled">
-                                <li><a href="blog-single.html" class="bg_btn">Search</a></li>
-                                <li><a href="blog-single.html" class="bg_btn">Innovation</a></li>
-                                <li><a href="blog-single.html" class="bg_btn">Business</a></li>
-                                <li><a href="blog-single.html" class="bg_btn">Development</a></li>
-                            </ul>
-                            <div class="share">
-                                <span>share:</span>
-                                <ul class="social_icon list-unstyled">
-                                    <li><a href="https://facebook.com"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                    <li><a href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a></li>
-                                    <li><a href="https://bd.linkedin.com/"><i class="fa-brands fa-linkedin-in"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="post_author">
-                            <img src="assets/img/blog/post_author.png" alt="">
-                            <div class="post_author_info">
-                                <p>Experience is fundamental to ensuring prospects stay engaged when visiting content
-                                    page the most of this 2021 content marketing trend, you </p>
-                                <div class="parsonal_info">
-                                    <h6><a href="">Enzon Hammond</a></h6>
-                                    <span>Content writer</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comments_area">
-                            <h5>Comments</h5>
-                            <div class="single_conmment_with_replay">
-                                <div class="comment">
-                                    <img src="assets/img/blog/comment.png" alt="">
-                                    <div class="comment_info">
-                                        <span>August 30, 2021</span>
-                                        <h6><a href="blog-single.html">Allison Everetti</a></h6>
-                                        <p>Experience is fundamental to ensuring prospects stay engaged when visiting
-                                            content page the most of this 2021 content marketing trend, you must
-                                            optimize your</p>
-                                        <a href="blog-single.html" class="bg_btn_color"><i
-                                                class="fa-solid fa-reply"></i> Reply</a>
-                                    </div>
-                                </div>
-                                <div class="comment reply">
-                                    <img src="assets/img/blog/replay.png" alt="">
-                                    <div class="comment_info">
-                                        <span>August 30, 2021</span>
-                                        <h6><a href="blog-single.html">Triagn Dominguez</a></h6>
-                                        <p>Experience is fundamental to ensuring prospects stay engaged when visiting
-                                            content page the most of this 2021 content marketing trend, you must
-                                            optimize your</p>
-                                        <a href="blog-single.html" class="bg_btn_color"><i
-                                                class="fa-solid fa-reply"></i> Reply</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment_box">
-                            <h5>Leave your reply</h5>
-                            <form action="#" class="comment_field">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <input type="text" class="form-control input" placeholder="Your full name">
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <input type="email" class="form-control input"
-                                            placeholder="Enter email address">
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <input type="url" class="form-control input" placeholder="Website address">
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <textarea name="msg" id="msg" class="form-control input"
-                                            placeholder="Write your message"></textarea>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <input type="submit" class="bg_btn_color" value="Post comment">
-                                    </div>
-                                </div>
-                            </form>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -286,13 +205,13 @@
             return `${monthInWord} ${convertedDate.getDay()}, ${convertedDate.getFullYear()}`;
         }
         document.addEventListener('DOMContentLoaded', () => {
-            // let cart = localStorage.getItem("cart");
-            // if(!JSON.parse(cart)) {
-            //     document.getElementById('cart-count').innerText = "0";
-            // } else {
-            //     let convertedCartArray = JSON.parse(cart);
-            //     document.getElementById('cart-count').innerText = convertedCartArray.length;
-            // }
+            let cart = localStorage.getItem("cart");
+            if(!JSON.parse(cart)) {
+                document.getElementById('cart-count').innerText = "0";
+            } else {
+                let convertedCartArray = JSON.parse(cart);
+                document.getElementById('cart-count').innerText = convertedCartArray.length;
+            }
 
             const blogId = window.location.toString().split('=')[1];
             // Replace 'https://api.example.com/project/1' with your actual API endpoint
@@ -312,6 +231,7 @@
                     // const uploadedDate = new Date(data.data.article.created_at);
                     // // Update HTML content with project details
                     document.getElementById('blog-title').innerText = data.data.title;
+                    document.getElementById('thumbnail').src = `https://trootfindrstorage.s3.amazonaws.com/${data.data.thumbnail}`;
                     document.getElementById("blog-content").innerHTML = data.data.content;
                     document.getElementById("blog-createdDate").innerText = dateFormatter(data.data.created_at);
                     // document.getElementById("article-amount").innerText = data.data.article.amount === "0" ? "FREE" : data.data.article.amount;

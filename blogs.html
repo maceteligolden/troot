@@ -72,7 +72,7 @@
                     </li>
                 </ul>
                 <div class="nav_buttons">
-                    <!-- <a href="cart.html" class="cart"><i class="fa-solid fa-bag-shopping"></i> Cart (<span id="cart-count"></span>)</a> -->
+                    <a href="cart.html" class="cart"><i class="fa-solid fa-bag-shopping"></i> Cart (<span id="cart-count"></span>)</a>
                     <a href="contact.html" class="contact_btn">Contact us</a>
                 </div>
             </div>
@@ -205,16 +205,16 @@
             return `${monthInWord} ${convertedDate.getDay()}, ${convertedDate.getFullYear()}`;
         }
         document.addEventListener('DOMContentLoaded', async () => {
-            // let cart = localStorage.getItem("cart");
-            // if(!JSON.parse(cart)) {
-            //     document.getElementById('cart-count').innerText = "0";
-            // } else {
-            //     let convertedCartArray = JSON.parse(cart);
-            //     document.getElementById('cart-count').innerText = convertedCartArray.length;
-            // }
+            let cart = localStorage.getItem("cart");
+            if(!JSON.parse(cart)) {
+                document.getElementById('cart-count').innerText = "0";
+            } else {
+                let convertedCartArray = JSON.parse(cart);
+                document.getElementById('cart-count').innerText = convertedCartArray.length;
+            }
         // Replace 'https://jsonplaceholder.typicode.com/todos' with your API endpoint
+        // const apiUrl = 'https://trootserver.onrender.com/api/v1/blogs';
         const apiUrl = 'https://trootserver.onrender.com/api/v1/blogs';
-
         try {
             // Fetch data from the API using Axios
             const response = await axios.get(apiUrl);
@@ -224,7 +224,7 @@
                     <div class="col-xl-6">
                         <div class="single_blog wow fadeInLeft" data-wow-delay="0.3s">
                             <div class="blog_top">
-                                <img src="assets/img/blog/8.png" alt="">
+                                <img src="https://trootfindrstorage.s3.amazonaws.com/${blog.thumbnail}" alt="">
                             </div>
                             <div class="blog_bottom">
                                 <div class="date_cetagory">
