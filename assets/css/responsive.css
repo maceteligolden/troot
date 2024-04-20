@@ -999,6 +999,11 @@
         padding-bottom: 75px;
     }
 
+    .portfolio_single_content .top .min_img {
+        object-fit: cover;
+        height: 400px;
+    }
+
     .power {
         padding-top: 75px;
         padding-bottom: 75px;
