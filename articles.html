@@ -192,9 +192,17 @@
             //     let convertedCartArray = JSON.parse(cart);
             //     document.getElementById('cart-count').innerText = convertedCartArray.length;
             // }
-        // Replace 'https://jsonplaceholder.typicode.com/todos' with your API endpoint
+            // Replace 'https://jsonplaceholder.typicode.com/todos' with your API endpoint
         const apiUrl = 'https://prod.api.trootfindr.com/api/v1/admin/article';
+               
+        function generateExcerpt(str) {
+            let updatedStr;
 
+            if (str.length > 10) {
+                updatedStr = str.substring(0,200) + "...";
+            }
+            return updatedStr;
+        }
         try {
             // Fetch data from the API using Axios
             const response = await axios.get(apiUrl);
@@ -212,6 +220,7 @@
                         </div>
                         <div class="project_bottom">
                             <h4><a href="article.html?article=${article._id}" id="card-title">${article.title}</a></h4>
+                            <p>${generateExcerpt(article.description)}</p>
                             <a class="project_btn" href="article.html?article=${article._id}">View Article<i
                                     class="fa-solid fa-arrow-right"></i></a>
                         </div>

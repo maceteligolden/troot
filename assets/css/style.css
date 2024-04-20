@@ -942,7 +942,7 @@ a {
 }
 
 .min_project_area .single_project .project_bottom {
-  padding-right: 250px;
+  padding-right: 0px;
   text-align: left;
 }
 
@@ -1042,7 +1042,7 @@ a {
 }
 
 .min_project_slider_area .single_project_slider .project_bottom {
-  padding-right: 250px;
+  padding-right: 0px;
   text-align: left;
 }
 
@@ -1363,7 +1363,7 @@ a {
 }
 
 .min_project_area_grid_two .single_project .project_bottom {
-  padding-right: 250px;
+  padding-right: 0px;
   text-align: left;
 }
 
