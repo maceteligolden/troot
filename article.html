@@ -107,7 +107,7 @@
                 <div class="top">
                     <img src="" alt="" id="image-thumbnail" class="min_img">
                     <div class="article-tags-container">
-                        <ul class="tags list-unstyled ">
+                        <ul class="tags list-unstyled " id="article-tags">
                             <!-- <li><a href="portfolio-single.html" class="bg_btn">Branding</a></li>
                             <li><a href="portfolio-single.html" class="bg_btn">Ui/ux</a></li>
                             <li><a href="portfolio-single.html" class="bg_btn">Development</a></li> -->
@@ -283,9 +283,15 @@
                 })
                 .then(data => {
                     activeArticle = data.data.article;
+                    console.log("article: ", JSON.stringify(activeArticle))
                     const options = { year: 'numeric', month: 'long', day: 'numeric' };
                     const uploadedDate = new Date(data.data.article.created_at);
                     // Update HTML content with project details
+                    document.getElementById('article-tags').innerHTML = activeArticle.tags.map(tag => 
+                        `
+                            <li><a href="#" class="bg_btn">${tag.name}</a></li>
+                        `
+                    )
                     document.getElementById('article-title').innerText = data.data.article.title;
                     document.getElementById('image-thumbnail').src = `https://trootfindrstorage.s3.amazonaws.com/${data.data.article.thumbnail}`;
                     document.getElementById("article-description").innerHTML = data.data.article.description;
