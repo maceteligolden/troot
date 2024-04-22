@@ -55,19 +55,19 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="services.html" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            services 
+                            Services 
                         </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="articles.html" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            articles
+                            Articles & Resources
                         </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="blogs.html" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            blog
+                            Blog
                         </a>
                     </li>
                 </ul>
@@ -216,6 +216,16 @@
         // Replace 'https://jsonplaceholder.typicode.com/todos' with your API endpoint
         // const apiUrl = 'https://trootserver.onrender.com/api/v1/blogs';
         const apiUrl = 'https://prod.api.trootfindr.com/api/v1/blogs';
+
+        function generateExcerpt(str) {
+            let updatedStr;
+
+            if (str.length > 10) {
+                updatedStr = str.substring(0,200) + "...";
+            }
+            return updatedStr;
+        }
+
         try {
             // Fetch data from the API using Axios
             const response = await axios.get(apiUrl);
@@ -234,6 +244,7 @@
                                     <span class="cetagory">${blog.category.name}</span>
                                 </div>
                                 <h3><a href="blog-single.html?blog=${blog._id}">${blog.title}</a></h3>
+                                <p>${generateExcerpt(blog.content)}</p>
                                 <a href="blog-single.html?blog=${blog._id}" class="text_btn">Read more <i
                                         class="fa-solid fa-arrow-right"></i></a>
                             </div>
